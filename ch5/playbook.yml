@@ -1,0 +1,24 @@
+- name: 웹 서버 구성
+  hosts: webserver
+  become: yes
+  vars:
+    web_root: /var/www/html
+
+  tasks:
+    - name: Apache 설치
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: 템플릿 index.html 복사
+      template:
+        src: templates/index.html
+        dest: "{{web_root}}/index.html"
+        mode: '0644'
+
+    - name: Apache 시작 및 부팅 시 자동 실행 설정
+      service:
+        name: apache2
+        state: started
+        enabled: yes

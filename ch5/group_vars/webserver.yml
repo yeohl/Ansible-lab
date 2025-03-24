@@ -1,0 +1,2 @@
+http_por: 80
+web_message: "ansible에 의해 자동 배포된 웹 서버입니다!"

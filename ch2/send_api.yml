@@ -1,0 +1,9 @@
+- name: Send API Key Info
+  hosts: prod
+  vars_files:
+    - "group_vars/{{group_names[0]}}/api.yml"
+
+  tasks:
+    - name: Print API Key
+      debug:
+        msg: "The API Key is {{api_key}}"

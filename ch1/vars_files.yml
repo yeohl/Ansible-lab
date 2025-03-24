@@ -1,0 +1,13 @@
+- name: Echoing Vars
+  hosts: all
+  vars_files:
+    - external_vars.yml
+
+  tasks:
+    - name: Echo var
+      ansible.builtin.command: /bin/echo "Hello World {{ msg_name }}"
+      register: response
+
+    - name: Print result
+      ansible.builtin.debug:
+        var: response

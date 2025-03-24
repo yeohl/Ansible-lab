@@ -1,0 +1,8 @@
+all:
+  hosts:
+    webserver:
+      ansible_host: 192.168.0.77
+      ansible_user: test
+      http_port: 80
+      max_clients: 200
+ 

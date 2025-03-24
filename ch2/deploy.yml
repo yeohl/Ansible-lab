@@ -1,0 +1,15 @@
+- name: Deploy Web App with DB
+  hosts: database
+  become: true
+  vars_files:
+    - group_vars/all/db_vars.yml
+
+  tasks:
+    - name: Install MySQL client
+      apt:
+        name: mysql-client
+        state: present
+
+    - name: Use database credentials
+      debug:
+        msg: "connecting to DB with user {{db_user}} and password{{db_password}}"

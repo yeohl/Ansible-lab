@@ -1,0 +1,15 @@
+- name: MySQL server
+  hosts: database
+  become: yes
+  tasks:
+    - name: Install mysql
+      apt:
+        name: mysql-server
+        state: present
+        update_cache: yes
+
+    - name: MySQL 서비스 시작 및 자동 실행 설정
+      service:
+        name: mysql
+        state: started
+        enabled: yes

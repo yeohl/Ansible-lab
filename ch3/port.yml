@@ -1,0 +1,6 @@
+- name: 웹 서버 설정
+  hosts: webserver
+  tasks:
+    - name: 포트 정보 출력
+      debug:
+        msg: "웹 서버의 포트는 {{http_port}} 입니다."

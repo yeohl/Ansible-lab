@@ -1,0 +1,17 @@
+- name: OS에 따라 JAVA 설치
+  hosts: webserver
+  become: true
+
+  vars:
+    java_version: "8"
+
+  tasks:
+    - name: Debian/Ubuntu 계열에서 Java 설치
+      include_role:
+        name: geerlingguy.java
+      when: ansible_os_family == "Debian"
+      vars:
+        java_packages: >-
+          {{
+            'openjdk-8-jdk' if java_version == '8' else 'openjdk-11-jdk'
+          }}

@@ -1,0 +1,10 @@
+- name: Nginx 설정 배포
+  hosts: localhost
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: nginx.conf 템플릿 생성
+      template:
+        src: nginx.conf.j2
+        dest: /home/sky/tmp/nginx.conf

@@ -1,0 +1,2 @@
+project_name: MyAnsibleProject
+ports: [80, 443, 8080]

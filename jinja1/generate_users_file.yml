@@ -1,0 +1,10 @@
+- name: 사용자 목록 파일 생성
+  hosts: localhost
+  vars_files:
+    - user_vars.yml
+
+  tasks:
+    - name: 사용자 템플릿 생성
+      template:
+        src: users.txt.j2
+        dest: /tmp/users.txt

@@ -1,0 +1,6 @@
+- name: Apache Role 적용
+  hosts: webserver
+  become: true
+
+  roles:
+    - role: webserver

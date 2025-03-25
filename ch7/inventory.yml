@@ -1,0 +1,8 @@
+all:
+  children:
+    webserver:
+      hosts:
+        192.168.0.77:
+        192.168.0.78:
+      vars:
+        ansible_user: test

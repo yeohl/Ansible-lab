@@ -1,0 +1,8 @@
+- name: Custom Module to create a file
+  hosts: localhost
+
+  tasks:
+    - name: Run custom file creation module
+      create_file:
+        path: "/home/sky/tmp/hello.txt"
+        content: "안녕하세요! Ansible에서 생성된 파일입니다."

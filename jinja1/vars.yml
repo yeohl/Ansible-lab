@@ -1,0 +1,2 @@
+server_name: example.com
+backend_ip: 192.168.0.77

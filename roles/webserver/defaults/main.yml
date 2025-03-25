@@ -1,0 +1,4 @@
+# webserver/defaults/main.yml
+
+http_port: 80
+index_content: "Hello from Ansible!"

@@ -1,0 +1,9 @@
+- name: 프로젝트 정보 파일 생성
+  hosts: localhost
+  vars_files:
+    - filter_vars.yml
+  tasks:
+    - name: 정보 템플릿 파일 생성
+      template:
+        src: project_info.txt.j2
+        dest: /home/sky/tmp/project_info.txt

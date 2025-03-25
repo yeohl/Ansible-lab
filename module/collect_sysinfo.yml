@@ -1,0 +1,13 @@
+- name: 시스템 정보 수집
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: 시스템 정보 수집 
+      shell: "uname -a && df -h > /home/test/tmp/sysinfo.txt"
+
+    - name: 로컬로 결과 복사
+      fetch:
+        src: /home/test/tmp/sysinfo.txt
+        dest: /home/sky/logs/{{ inventory_hostname }}_sysinfo.txt
+        flat: yes

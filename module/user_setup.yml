@@ -1,0 +1,18 @@
+- name: 사용자 및 홈 디렉터리 생성  
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: 사용자 추가
+      user:
+        name: devuser
+        shell: /bin/bash
+        state: present
+
+    - name: 사용자 홈 디렉터리 생성
+      file:
+        path: /home/test/devuser
+        state: directory
+        owner: devuser
+        group: devuser
+        mode: '0750'

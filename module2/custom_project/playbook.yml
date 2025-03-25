@@ -1,0 +1,13 @@
+- name: Custom Module Example
+  hosts: localhost
+
+  tasks:
+    - name: Run custom hello module
+      custom_hello:
+        name: "Ansible 사용자"
+      register: hello_result
+
+           
+    - name: 결과 메시지 출력
+      debug:
+        msg: "{{ hello_result.message }}"

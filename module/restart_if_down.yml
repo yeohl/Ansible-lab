@@ -1,0 +1,15 @@
+- name: 서비스 상태 점검 및 재시작
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: httpd 상태 확인
+      shell: systemctl is-active apache2
+      register: result
+      ignore_errors: yes
+
+    - name: 상태 비정상이면 재시작
+      service:
+        name: apache2
+        state: restarted
+      when: result.stdout != "active"

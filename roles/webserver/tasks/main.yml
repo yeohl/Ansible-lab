@@ -1,0 +1,15 @@
+- name: Apache 설치
+  apt:
+    name: httpd
+    state: present
+
+- name: index.html 파일 복사
+  copy:
+    content: "{{index_content}}"
+    dest: /var/www/html/index.html
+
+- name: Apache 서비스 시작 및 부팅 시 자동 시작
+  service:
+    name: httpd
+    state: started
+    enabled: true

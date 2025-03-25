@@ -1,0 +1,16 @@
+- name: OS 웹 서버 자동 설치
+  hosts: webserver
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Ubuntu 계열이면 apache 설치
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: 그 외 OS면 Nginx 설치
+      apt:
+        name: nginx
+        state: present
+      when: ansible_distribution != "Ubuntu"

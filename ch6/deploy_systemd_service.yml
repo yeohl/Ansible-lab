@@ -1,0 +1,21 @@
+- name: 애플리케이션 서비스 배포 및 데몬 재로드
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: 서비스 파일 배포
+      copy:
+        src: ./files/myapp.service
+        dest: /etc/systemd/system/myapp.service
+        mode: 0644
+      notify:
+        - reload systemd
+        - restart myapp service
+  handlers:
+    - name: reload systemd
+      command: systemctl daemon-reexec
+
+    - name: restart myapp service
+      service:
+        name: myapp
+        state: restarted
